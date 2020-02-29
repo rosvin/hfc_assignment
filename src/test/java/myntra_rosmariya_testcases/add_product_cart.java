@@ -2,7 +2,9 @@ package myntra_rosmariya_testcases;
 
 import java.util.concurrent.TimeUnit;
 
-
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,35 +18,34 @@ public class add_product_cart extends baseclass {
 	{
 		driver.get(baseUrl);
 		myntrapageobjects prod = new myntrapageobjects(driver);
-	
-		prod.addproduct();
-		prod.prod_cart();
-		prod.prod_bag();
-		driver.get(URL);
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        prod.uemail(EMAIL);
+		prod.Popalert();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,5500)");
 		
-		prod.prod_pass(PASSWORD);
-		
-		prod.submitbutton();
-		
-		prod.prod_cart();
-		
-		prod.womencat();
-		
-		prod.placeorderlog();
-		prod.contbutton();
+		prod.mamacitoproduct();
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+		prod.add_address(ADDRESS);
+		prod.Locate();
+		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+		prod.buritto_dish();
+		prod.addtocart();
+		driver.navigate().refresh();
+		prod.buritto_dish1();
 
-if(driver.getCurrentUrl().equals("https://www.myntra.com/checkout/paymentyyy"))
-		{
-			Assert.assertTrue(true);
-			System.out.print("Matches");
-		}
-		else
-		{
-			Assert.assertFalse(false);
-			System.out.print(" Do not Matches");
-		}
+		prod.addtocart();
+		prod.buritto_dish2();
+		prod.addtocart();
+		
+		
+		// Have checked whether the product is added by checking the price Not equal to null 
+		
+		if(driver.findElement(By.xpath("//span[@class='item--price']"))!= null){
+			System.out.println("Added to cart successfully");
+			}
+		else{
+			System.out.println("Cannot be added");
+			}
 	}
 
 }

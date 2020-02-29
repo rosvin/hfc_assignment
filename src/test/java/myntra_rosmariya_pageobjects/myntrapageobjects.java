@@ -1,5 +1,9 @@
 package myntra_rosmariya_pageobjects;
 
+import java.io.File;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,71 +20,65 @@ public class myntrapageobjects {
      PageFactory.initElements(rdriver,this);
 	}
 	
-    @FindBy(xpath = "//div[contains(text(),'ADD TO BAG')]")
+    @FindBy(css = "body.is--ctl-index.is--act-index.clubkitchen.is--no-sidebar:nth-child(2) div.page-wrap:nth-child(2) section.content-main.content--home.container.block-group.is--fullscreen div.content-main--inner div.content--wrapper div.content.content--home div.content--emotions div.emotion--wrapper:nth-child(10) section.emotion--container.emotion--column-12.emotion--mode-fluid.emotion--0 div.emotion--element.col-1.row-1.start-col-1.start-row-1.col-xs-5.start-col-xs-2.row-xs-5.start-row-xs-10.col-s-5.start-col-s-2.row-s-5.start-row-s-10.col-m-5.start-col-m-1.row-m-16.start-row-m-8.col-l-6.start-col-l-1.row-l-7.start-row-l-10.col-xl-5.start-col-xl-2.row-xl-6.start-row-xl-10:nth-child(2) div.restaurant--description.left > a.button-home.is--primary:nth-child(2)")
     WebElement product;
-    @FindBy(xpath = "//span[@class='myntraweb-sprite desktop-iconBag sprites-headerBag']")
+    @FindBy(xpath = "//input[@id='address-input']")
     WebElement productbag;
-    @FindBy(xpath = "//div[contains(@class,'button-base-button')]")
-    WebElement placeorder;
-    //Login data
-    @FindBy (xpath = "//input[@placeholder='Your Email Address']")
-    WebElement email;
-    @FindBy (xpath = "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/form[1]/fieldset[1]/div[2]/input[1]")
-    WebElement password;
-    @FindBy(xpath = "//button[@class='login-login-button']")
-    WebElement submit;
+    @FindBy(xpath = "//input[@class='btn--honest blattgold--form-banner-submit']")
+    WebElement location;
+    @FindBy (xpath ="//*[@id=\"cookie-policy\"]/div/div[2]/button")
+    WebElement pop;
+    
+    
+    //selection of product
     //bag
-    @FindBy(xpath ="//div[@id='placeOrderButton']")
-    WebElement Continue_b;
-    @FindBy(xpath ="//span[contains(text(),'Bag')]")
-    WebElement bag;
+    @FindBy(xpath = "//div[@class='product--category category--596']//div[2]//div[1]//div[2]//div[1]//form[1]//button[1]")
+    WebElement buritto;
+    @FindBy(xpath ="//button[@id='topup-modal--close']")
+    WebElement add_dish;
+    @FindBy(xpath ="//div[@class='product--category category--596']//div[4]//div[1]//div[2]//div[1]//form[1]//button[1]")
+    WebElement buritto1;
+    @FindBy(xpath ="//div[@class='product--category category--598']//div[4]//div[1]//div[2]//div[1]//form[1]//button[1]")
+    WebElement buritto3;
+  
     
-   
-    
-    @FindBy(xpath ="//div[contains(@class,'button-base-button')]")
-    WebElement wear;
-    @FindBy(xpath ="//div[@id='placeOrderButton']")
-    WebElement cont;
-    
-    public void addproduct()
+    public void Popalert()
+    {
+    	pop.click();
+    }
+    public void mamacitoproduct()
     {
     	product.click();
     }
-    public void prod_cart()
+    public void add_address(String ADDRESS)
     {
-    	productbag.click();
+    	productbag.sendKeys(ADDRESS);
     }
-    public void prod_bag()
+   
+    public void Locate()
     {
-    	placeorder.click();
+    	location.click();
     }
 
-    public void uemail(String EMAIL)
+    public void buritto_dish()
     {
-    email.sendKeys(EMAIL);}
-    	
-    public void prod_pass(String PASSWORD)
-    {
-    	password.sendKeys(PASSWORD);
-    	
+    	buritto.click();
     }
-    public void submitbutton()
+    public void addtocart()
     {
-    	submit.click();
+    	add_dish.click();
     }
-	
-	
-	public void womencat()
-	{
-		bag.click();
-	}
-	public void placeorderlog()
-	{
-		wear.click();
-	}
-	public void contbutton()
-	{
-		cont.click();
-	}
-	}
+    public void buritto_dish1()
+    {
+    	buritto.click();
+    }
+    public void buritto_dish2()
+    {
+    	buritto3.click();
+    }
+   
+    }
 
+
+	
+	
